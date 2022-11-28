@@ -5,8 +5,6 @@
  */
 
 /**
- * @type {import('gatsby').GatsbyNode['createPages']}
- */
 exports.createPages = async ({ actions }) => {
   const { createPage } = actions
   createPage({
@@ -16,3 +14,14 @@ exports.createPages = async ({ actions }) => {
     defer: true,
   })
 }
+ * @type {import('gatsby').GatsbyNode['createPages']}
+ */
+
+
+exports.createPages = async ({ graphql, actions }) => {
+	const { createRedirect } = actions;
+createRedirect({
+  fromPath: `/page-2/*`,
+  toPath: `https://www.gatsbyjs.com/docs/*`,
+  statusCode: 200,
+})
